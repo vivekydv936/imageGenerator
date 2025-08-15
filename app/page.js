@@ -1,10 +1,9 @@
 // FILE: app/page.js
 // This is the complete and corrected code for your frontend UI.
-// Test change to force a commit
 
 'use client';
 
-import { useState, useEffect } from 'react'; // FIX: Added useEffect to the import statement
+import { useState, useEffect } from 'react';
 
 // --- SVG Icon Components ---
 
@@ -42,7 +41,6 @@ export default function HomePage() {
   const [imageUrl, setImageUrl] = useState(null);
   const [isMounted, setIsMounted] = useState(false);
 
-  // This hook is now correctly imported and will work
   useEffect(() => {
     setIsMounted(true);
   }, []);
