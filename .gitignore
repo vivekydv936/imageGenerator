@@ -1,0 +1,19 @@
+# Environment variables - DO NOT UPLOAD YOUR API KEY!
+.env
+.env*.local
+
+# Python backend dependencies
+backend/venv/
+
+# Node.js frontend dependencies
+frontend/node_modules/
+
+# Next.js build files
+frontend/.next/
+frontend/out/
+
+# IDE and OS files
+.vscode/
+__pycache__/
+.DS_Store
+node_modules
