@@ -1,5 +1,6 @@
 // FILE: app/page.js
 // This is the complete and corrected code for your frontend UI.
+// Test change to force a commit
 
 'use client';
 
