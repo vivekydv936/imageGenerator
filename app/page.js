@@ -3,7 +3,7 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react'; // FIX: Added useEffect to the import statement
 
 // --- SVG Icon Components ---
 
@@ -39,6 +39,12 @@ export default function HomePage() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [imageUrl, setImageUrl] = useState(null);
+  const [isMounted, setIsMounted] = useState(false);
+
+  // This hook is now correctly imported and will work
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
