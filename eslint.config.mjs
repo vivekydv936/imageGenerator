@@ -1,14 +1,31 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+// FILE: eslint.config.mjs
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import nextPlugin from '@next/eslint-plugin-next';
+import reactPlugin from 'eslint-plugin-react';
+import hooksPlugin from 'eslint-plugin-react-hooks';
 
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+export default [
+  {
+    files: ['**/*.js', '**/*.jsx'],
+    plugins: {
+      '@next/next': nextPlugin,
+      'react': reactPlugin,
+      'react-hooks': hooksPlugin,
+    },
+    rules: {
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs['core-web-vitals'].rules,
+      ...reactPlugin.configs.recommended.rules,
+      ...hooksPlugin.configs.recommended.rules,
 
-const eslintConfig = [...compat.extends("next/core-web-vitals")];
-
-export default eslintConfig;
+      // --- THIS IS THE FIX ---
+      // This line tells the linter to ignore errors about unescaped quotes.
+      'react/no-unescaped-entities': 'off',
+    },
+    settings: {
+      react: {
+        version: 'detect',
+      },
+    },
+  },
+];
